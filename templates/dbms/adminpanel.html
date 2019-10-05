@@ -1,0 +1,29 @@
+{% extends "dbms/submitted.html" %}
+
+{% block title %}
+Admin panel  
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="shadow-lg mx-3 my-3 p-3 mb-5 bg-white rounded">
+<div class="row mx-3 my-3 p-3 mb-2 bg-dark text-white border border-dark rounded ">
+
+        {% for i in pro %}
+<div class="container">
+<div class="row my-2">
+          <div class="col">{{i.fname}}</div>
+          <div class="col">{{i.lname}}</div>
+          <div class="col">{{i.email}}</div>
+          <div class="col">{{i.city}}</div>
+          <div class="col">{{i.pin}}</div>
+          <button type="button" class="btn btn-success">Approve</button>
+          <button type="button" class="btn btn-danger mx-2">Reject</button>
+        </div>
+    </div>
+{% endfor %}
+</div>
+</div>
+
+    
+{% endblock body %}
