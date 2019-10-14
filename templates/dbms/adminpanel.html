@@ -12,13 +12,23 @@ Admin panel
         {% for i in pro %}
 <div class="container">
 <div class="row my-2">
-          <div class="col">{{i.fname}}</div>
-          <div class="col">{{i.lname}}</div>
-          <div class="col">{{i.email}}</div>
-          <div class="col">{{i.city}}</div>
-          <div class="col">{{i.pin}}</div>
-          <button type="button" class="btn btn-success">Approve</button>
-          <button type="button" class="btn btn-danger mx-2">Reject</button>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="col"><p>Firstname: {{i.fname}}</p></div>
+      <div class="col"><p>Lastname: {{i.lname}}</p></div>
+      <div class="col"><p>Email: {{i.email}}</p></div>
+      <div class="col"><p>City: {{i.city}}</p></div>
+      <div class="col"><p>Pin: {{i.pin}}</p></div>
+      <input type="hidden" name="object_fname" value="{{ i.fname }}">
+      <input type="hidden" name="object_lname" value="{{ i.lname }}">
+      <input type="hidden" name="object_email" value="{{ i.email }}">
+      <input type="hidden" name="object_city" value="{{ i.city }}">
+      <input type="hidden" name="object_state" value="{{ i.state }}">
+      <input type="hidden" name="object_pin" value="{{ i.pin }}">
+      <input class="btn btn-success mx-2" name="form_approved" type="submit" value="Approve">
+      <input type="hidden" name="object_id" value="{{ i.id }}">
+      <input class="btn btn-danger mx-2" name="form_rejected" type="submit" value="Reject">  <!--Added attribute name="form_rejected"--> 
+  </form>
         </div>
     </div>
 {% endfor %}
